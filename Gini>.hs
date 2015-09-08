@@ -1,22 +1,27 @@
-# MaafTelat
 -- First Assignment
 -- Reimplement Haskell function
 -- DON'T USE GOOGLE
-module Template where
+module INI where
 
 import Data.List
 
 -- 1.a
 
-null' x = x
+null' x
+  | x == [] = True
+  | otherwise = False
 
 --pembatas
 
-take' x = x
+take' a [] = []
+take' 0 (x:xs) = []
+take' a (x:xs) = x : take' (a-1) (xs)
 
 --pembatas
 
-drop' x = x
+drop' a [] = []
+drop' 0 (x:xs) = (x:xs)
+drop' a (x:xs) = drop' (a-1) (xs)
 
 --pembatas
 
@@ -72,11 +77,19 @@ scanl1' x = x
 
 --pembatas
 
-elem' x = x
+elem' a [] = False
+elem' a (x:xs)
+  | a == x = True
+  | a /= x = elem' a (xs)
+  | otherwise = False
 
 --pembatas
 
-notElem' x = x
+notElem' a [] = True
+notElem' a (x:xs)
+  | a == x = False
+  | a /= x = notElem' a (xs)
+  | otherwise = True
 
 --pembatas
 
@@ -84,7 +97,8 @@ head' (x:xs) = x
 
 --pembatas
 
-length' x = x
+length' [] = 0
+length' (x:xs) = 1 + length' xs
 
 --pembatas
 
@@ -92,23 +106,28 @@ reverse' x = x
 
 --pembatas
 
-last' x = x
-
+last' [x] = x
+last' (x:xs) = last' xs
 --pembatas
 
 tail' (x:xs) = xs
 
 --pembatas
 
-init' x = x
+init' [x] = []
+init' (x:xs) = x : init' xs
 
 --pembatas
 
-max' x = x
+max' x y
+  | x < y = y
+  | x > y = x
 
 --pembatas
 
-min' x = x
+min' x y
+  | x < y = x
+  | x > y = y
 
 --pembatas
 
@@ -136,11 +155,13 @@ zip3' x = x
 
 --pembatas
 
-sum' x = x
+sum' [] = 0
+sum' (x:xs) = x + sum' xs
 
 --pembatas
 
-product' x = x
+product' [] = 1
+product' (x:xs) = x * product' xs
 
 --pembatas
 
@@ -222,7 +243,9 @@ intersect' x = x
 
 --pembatas
 
-group' x = x
+group' [] = []
+group' [x] = [[x]]
+group' (x:xs) = [[x]] ++ group' xs
 
 --pembatas
 
