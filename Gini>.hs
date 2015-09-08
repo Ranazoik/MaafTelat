@@ -260,6 +260,7 @@ partition' x = x
 replicate' x = x
 
 --pembatas
+
 -- First Assignment
 -- Reimplement Haskell function
 -- DON'T USE GOOGLE
